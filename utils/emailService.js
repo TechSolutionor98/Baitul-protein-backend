@@ -26,12 +26,12 @@ const getMailConfig = (type) => {
   if (type === "order") {
     return {
       transporter: orderTransporter,
-      from: `Graba2z Orders <${process.env.ORDER_EMAIL_USER}>`,
+      from: `Baytal Protein Orders <${process.env.ORDER_EMAIL_USER}>`,
     }
   } else {
     return {
       transporter: supportTransporter,
-      from: `Graba2z Support <${process.env.SUPPORT_EMAIL_USER}>`,
+      from: `Baytal Protein Support <${process.env.SUPPORT_EMAIL_USER}>`,
     }
   }
 }
@@ -379,13 +379,13 @@ const getEmailTemplate = (type, data) => {
           <div class="container">
             <div class="header">
               <a href="https://www.graba2z.ae/" target="_blank">
-                <img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753105567/admin-logo_ruxcjj.png" alt="Graba2z Logo" />
+                <img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753105567/admin-logo_ruxcjj.png" alt="Baytal Protein Logo" />
               </a>
             </div>
             <div class="content">
               <h2>Email Verification</h2>
               <p>Hi <b>${data.name || "User"}</b>,<br />
-              Thank you for registering with Graba2z. Please verify your email address by entering the verification code below:</p>
+              Thank you for registering with Baytal Protein. Please verify your email address by entering the verification code below:</p>
               <div class="code-box">${data.code || "000000"}</div>
               <p style="margin: 16px 0 0 0; color: #1abc7b; font-weight: bold;">
                 Copy the code above and paste it on the website to verify your email.
@@ -404,8 +404,8 @@ const getEmailTemplate = (type, data) => {
               <p>Kindly Do Not Reply to this Email</p>
               <br/>
               <div style="margin-top: 10px; color: #888;">
-                &copy; 2025 Graba2z. All rights reserved.<br />
-                <span style="font-size:12px;">If you did not enter this email address when signing up for Graba2z, disregard this message.</span>
+                &copy; 2025 Baytal Protein. All rights reserved.<br />
+                <span style="font-size:12px;">If you did not enter this email address when signing up for Baytal Protein, disregard this message.</span>
               </div>
             </div>
           </div>
@@ -667,7 +667,7 @@ const getEmailTemplate = (type, data) => {
           <div class="container">
             <div class="header">
               <a href="https://www.graba2z.ae/" target="_blank">
-                <img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753105567/admin-logo_ruxcjj.png" alt="Graba2z Logo" />
+                <img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753105567/admin-logo_ruxcjj.png" alt="Baytal Protein Logo" />
               </a>
               <div class="order-icon">🛒</div>
             </div>
@@ -755,8 +755,8 @@ const getEmailTemplate = (type, data) => {
               <p>Kindly Do Not Reply to this Email</p>
               <br/>
               <div style="margin-top: 10px; color: #888;">
-                &copy; 2025 Graba2z. All rights reserved.<br />
-                <span style="font-size:12px;">If you did not enter this email address when signing up for Graba2z, disregard this message.</span>
+                &copy; 2025 Baytal Protein. All rights reserved.<br />
+                <span style="font-size:12px;">If you did not enter this email address when signing up for Baytal Protein, disregard this message.</span>
               </div>
             </div>
           </div>
@@ -864,7 +864,7 @@ const getEmailTemplate = (type, data) => {
           <div class="container">
             <div class="header">
               <a href="https://www.graba2z.ae/" target="_blank">
-                <img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753105567/admin-logo_ruxcjj.png" alt="Graba2z Logo" />
+                <img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753105567/admin-logo_ruxcjj.png" alt="Baytal Protein Logo" />
               </a>
             </div>
             <div class="content">
@@ -906,8 +906,8 @@ const getEmailTemplate = (type, data) => {
               <p>Kindly Do Not Reply to this Email</p>
               <br/>
               <div style="margin-top: 10px; color: #888;">
-                &copy; 2025 Graba2z. All rights reserved.<br />
-                <span style="font-size:12px;">If you did not enter this email address when signing up for Graba2z, disregard this message.</span>
+                &copy; 2025 Baytal Protein. All rights reserved.<br />
+                <span style="font-size:12px;">If you did not enter this email address when signing up for Baytal Protein, disregard this message.</span>
               </div>
             </div>
           </div>
@@ -1021,7 +1021,7 @@ const getEmailTemplate = (type, data) => {
           <div class="container">
             <div class="header">
               <a href="https://www.graba2z.ae/" target="_blank">
-                <img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753105567/admin-logo_ruxcjj.png" alt="Graba2z Logo" />
+                <img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753105567/admin-logo_ruxcjj.png" alt="Baytal Protein Logo" />
               </a>
             </div>
             <div class="content">
@@ -1051,7 +1051,7 @@ const getEmailTemplate = (type, data) => {
               <p>Kindly Do Not Reply to this Email</p>
               <br/>
               <div style="margin-top: 10px; color: #888;">
-                &copy; 2025 Graba2z. All rights reserved.<br />
+                &copy; 2025 Baytal Protein. All rights reserved.<br />
                 <span style="font-size:12px;">If you did not submit this review, disregard this message.</span>
               </div>
             </div>
@@ -1067,16 +1067,16 @@ const getEmailTemplate = (type, data) => {
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Graba2z</title>
+          <title>Baytal Protein</title>
           ${baseStyle}
         </head>
         <body>
           <div class="email-container">
             <div class="header">
-              <img src="https://graba2z.ae/logo.png" alt="Graba2z" class="logo" />
+              <img src="https://graba2z.ae/logo.png" alt="Baytal Protein" class="logo" />
             </div>
             <div class="content">
-              <p>Thank you for choosing Graba2z!</p>
+              <p>Thank you for choosing Baytal Protein!</p>
             </div>
             <div class="footer">
               <h3>Get in Touch</h3>
@@ -1126,7 +1126,7 @@ const sendEmail = async (to, subject, html, senderType = "support") => {
 export const sendVerificationEmail = async (email, name, code) => {
   try {
     const html = getEmailTemplate("emailVerification", { name, code })
-    await sendEmail(email, "Verify Your Email - Graba2z", html, "support")
+    await sendEmail(email, "Verify Your Email - Baytal Protein", html, "support")
     return { success: true }
   } catch (error) {
     console.error("Failed to send verification email:", error)
@@ -1153,7 +1153,7 @@ export const sendOrderPlacedEmail = async (order) => {
       customerEmail,
     })
 
-    await sendEmail(customerEmail, `Order Confirmation #${orderNumber} - Graba2z`, html, "order")
+    await sendEmail(customerEmail, `Order Confirmation #${orderNumber} - Baytal Protein`, html, "order")
     return { success: true }
   } catch (error) {
     console.error("Failed to send order placed email:", error)
@@ -1187,7 +1187,7 @@ export const sendOrderStatusUpdateEmail = async (order) => {
       cancelled: "Order Cancelled",
     }
 
-    const subject = `${statusMessages[order.status] || "Order Update"} #${orderNumber} - Graba2z`
+    const subject = `${statusMessages[order.status] || "Order Update"} #${orderNumber} - Baytal Protein`
     await sendEmail(customerEmail, subject, html, "order")
     return { success: true }
   } catch (error) {
@@ -1200,7 +1200,7 @@ export const sendOrderStatusUpdateEmail = async (order) => {
 export const sendReviewVerificationEmail = async (email, name, code, productName, rating, comment) => {
   try {
     const html = getEmailTemplate("reviewVerification", { name, code, productName, rating, comment })
-    await sendEmail(email, "Verify Your Product Review - Graba2z", html, "support")
+    await sendEmail(email, "Verify Your Product Review - Baytal Protein", html, "support")
     return { success: true }
   } catch (error) {
     console.error("Failed to send review verification email:", error)
@@ -1221,7 +1221,7 @@ export const sendNewsletterConfirmation = async (email, preferences) => {
       <p style="color: #888; font-size: 13px; margin-top: 24px;">This is an automated message. Please do not reply.</p>
     </div>
   `
-  await sendEmail(email, "Newsletter Subscription Confirmed - Graba2z", html, "support")
+  await sendEmail(email, "Newsletter Subscription Confirmed - Baytal Protein", html, "support")
 }
 
 export const sendResetPasswordEmail = async (email, name, resetLink) => {
@@ -1233,10 +1233,10 @@ export const sendResetPasswordEmail = async (email, name, resetLink) => {
         <p>We received a request to reset your password. Click the button below to set a new password. This link is valid for 60 minutes.</p>
         <a href="${resetLink}" style="display: inline-block; margin: 24px 0; padding: 12px 24px; background: #84cc16; color: #fff; border-radius: 4px; text-decoration: none; font-weight: bold;">Reset Password</a>
         <p>If you did not request this, you can safely ignore this email.</p>
-        <p style="color: #888; font-size: 12px; margin-top: 32px;">&copy; ${new Date().getFullYear()} Graba2z</p>
+        <p style="color: #888; font-size: 12px; margin-top: 32px;">&copy; ${new Date().getFullYear()} Baytal Protein</p>
       </div>
     `
-    await sendEmail(email, "Reset Your Password - Graba2z", html, "support")
+    await sendEmail(email, "Reset Your Password - Baytal Protein", html, "support")
     return { success: true }
   } catch (error) {
     console.error("Failed to send reset password email:", error)
