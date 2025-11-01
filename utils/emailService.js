@@ -633,7 +633,7 @@ const getEmailTemplate = (type, data) => {
               <div class="processing-text">We are processing your order.</div>
               <div class="action-buttons">
                 <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}" class="button">Visit Website</a>
-                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button" style="color:#ffffff !important; text-decoration:none;">Track Your Order</a>
+                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button" style="background:#d9a82e !important; color:#ffffff !important; text-decoration:none;">Track Your Order</a>
               </div>
               ${
                 orderItems.length > 0
@@ -850,7 +850,7 @@ const getEmailTemplate = (type, data) => {
                 <tr><td colspan="2" class="vat">(includes ${statusVatAmount} AED VAT)</td></tr>
               </table>
               <div class="action-buttons">
-                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button" style="color:#ffffff !important; text-decoration:none;">Track Your Order</a>
+                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button" style="background:#d9a82e !important; color:#ffffff !important; text-decoration:none;">Track Your Order</a>
               </div>
             </div>
             <div class="footer">
