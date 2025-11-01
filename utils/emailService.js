@@ -348,26 +348,7 @@ const getEmailTemplate = (type, data) => {
               font-size: 13px;
               color: #888;
             }
-            .footer .socials {
-              margin: 18px 0 10px 0;
-            }
-            .footer .socials a {
-              display: inline-block;
-              margin: 0 10px;
-              text-decoration: none;
-            }
-            .footer .socials img {
-              width: 32px;
-              height: 32px;
-              vertical-align: middle;
-              border-radius: 50%;
-              background: #fff;
-              box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-              transition: box-shadow 0.2s;
-            }
-            .footer .socials img:hover {
-              box-shadow: 0 4px 16px rgba(26,188,123,0.15);
-            }
+            
             @media (max-width: 600px) {
               .container { border-radius: 0; margin: 0; }
               .content { padding: 24px 8px 24px 8px; }
@@ -378,8 +359,8 @@ const getEmailTemplate = (type, data) => {
         <body>
           <div class="container">
             <div class="header">
-              <a href="https://www.graba2z.ae/" target="_blank">
-                <img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753105567/admin-logo_ruxcjj.png" alt="Baytal Protein Logo" />
+              <a href="https://baytalprotein.net/" target="_blank">
+                <img src="https://res.cloudinary.com/dyyb62prf/image/upload/v1761983430/logoblue_uplb3m.webp" alt="Baytal Protein Logo" />
               </a>
             </div>
             <div class="content">
@@ -393,13 +374,7 @@ const getEmailTemplate = (type, data) => {
               <p style="margin-top: 2em; color: #888; font-size: 1em;">This code will expire in 10 minutes.<br />If you didn't create an account with us, please ignore this email.</p>
             </div>
             <div class="footer">
-              <div class="socials">
-                <a href="https://www.facebook.com/grabatozae/" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107123/WhatsApp_Image_2025-07-21_at_7.10.18_AM_1_axvzvv.jpg" alt="Facebook" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-                <a href="https://www.instagram.com/grabatoz/" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107124/WhatsApp_Image_2025-07-21_at_7.10.18_AM_xgjv5f.jpg" alt="Instagram" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-                <a href="https://x.com/GrabAtoz" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107545/WhatsApp_Image_2025-07-21_at_7.10.18_AM_2_cwzjg6.png" alt="X" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-                <a href="https://www.linkedin.com/company/grabatozae" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107123/WhatsApp_Image_2025-07-21_at_7.10.18_AM_3_ll6y2i.jpg" alt="LinkedIn" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-              </div>
-              <p>This email was sent by: support@grabatoz.ae</p>
+              <p>This email was sent by: support@baytalprotein.net</p>
               <br/>
               <p>Kindly Do Not Reply to this Email</p>
               <br/>
@@ -636,26 +611,7 @@ const getEmailTemplate = (type, data) => {
               font-size: 13px;
               color: #888;
             }
-            .footer .socials {
-              margin: 18px 0 10px 0;
-            }
-            .footer .socials a {
-              display: inline-block;
-              margin: 0 10px;
-              text-decoration: none;
-            }
-            .footer .socials img {
-              width: 32px;
-              height: 32px;
-              vertical-align: middle;
-              border-radius: 50%;
-              background: #fff;
-              box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-              transition: box-shadow 0.2s;
-            }
-            .footer .socials img:hover {
-              box-shadow: 0 4px 16px rgba(26,188,123,0.15);
-            }
+            
             @media (max-width: 600px) {
               .container { border-radius: 0; margin: 0; }
               .content { padding: 24px 8px 24px 8px; }
@@ -666,8 +622,8 @@ const getEmailTemplate = (type, data) => {
         <body>
           <div class="container">
             <div class="header">
-              <a href="https://www.graba2z.ae/" target="_blank">
-                <img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753105567/admin-logo_ruxcjj.png" alt="Baytal Protein Logo" />
+              <a href="https://baytalprotein.net/" target="_blank">
+                <img src="https://res.cloudinary.com/dyyb62prf/image/upload/v1761983430/logoblue_uplb3m.webp" alt="Baytal Protein Logo" />
               </a>
               <div class="order-icon">🛒</div>
             </div>
@@ -676,8 +632,8 @@ const getEmailTemplate = (type, data) => {
               <div class="greeting">Hi ${customerName}, Thank you for your purchase.</div>
               <div class="processing-text">We are processing your order.</div>
               <div class="action-buttons">
-                <a href="${process.env.FRONTEND_URL || "https://graba2z.ae"}" class="button">Visit Website</a>
-                <a href="${process.env.FRONTEND_URL || "https://graba2z.ae"}/track-order" class="button">Track Your Order</a>
+                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}" class="button">Visit Website</a>
+                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button">Track Your Order</a>
               </div>
               ${
                 orderItems.length > 0
@@ -744,13 +700,7 @@ const getEmailTemplate = (type, data) => {
               </div>
             </div>
             <div class="footer">
-              <div class="socials">
-                <a href="https://www.facebook.com/grabatozae/" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107123/WhatsApp_Image_2025-07-21_at_7.10.18_AM_1_axvzvv.jpg" alt="Facebook" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-                <a href="https://www.instagram.com/grabatoz/" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107124/WhatsApp_Image_2025-07-21_at_7.10.18_AM_xgjv5f.jpg" alt="Instagram" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-                <a href="https://x.com/GrabAtoz" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107545/WhatsApp_Image_2025-07-21_at_7.10.18_AM_2_cwzjg6.png" alt="X" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-                <a href="https://www.linkedin.com/company/grabatozae" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107123/WhatsApp_Image_2025-07-21_at_7.10.18_AM_3_ll6y2i.jpg" alt="LinkedIn" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-              </div>
-              <p>This email was sent by: order@grabatoz.ae</p>
+              <p>This email was sent by: order@baytalprotein.net</p>
               <br/>
               <p>Kindly Do Not Reply to this Email</p>
               <br/>
@@ -853,18 +803,14 @@ const getEmailTemplate = (type, data) => {
             .order-summary-totals .total { font-weight: bold; font-size: 17px; color: #689f38; }
             .order-summary-totals .vat { font-size: 13px; color: #888; text-align: right; }
             .footer { background-color: #e8f7ee; padding: 32px 20px 20px 20px; text-align: center; font-size: 13px; color: #888; }
-            .footer .socials { margin: 18px 0 10px 0; }
-            .footer .socials a { display: inline-block; margin: 0 10px; text-decoration: none; }
-            .footer .socials img { width: 32px; height: 32px; vertical-align: middle; border-radius: 50%; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: box-shadow 0.2s; }
-            .footer .socials img:hover { box-shadow: 0 4px 16px rgba(26,188,123,0.15); }
             @media (max-width: 600px) { .container { border-radius: 0; margin: 0; } .content { padding: 24px 8px 24px 8px; } .footer { padding: 24px 4px 12px 4px; } }
           </style>
         </head>
         <body>
           <div class="container">
             <div class="header">
-              <a href="https://www.graba2z.ae/" target="_blank">
-                <img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753105567/admin-logo_ruxcjj.png" alt="Baytal Protein Logo" />
+              <a href="https://baytalprotein.net/" target="_blank">
+                <img src="https://res.cloudinary.com/dyyb62prf/image/upload/v1761983430/logoblue_uplb3m.webp" alt="Baytal Protein Logo" />
               </a>
             </div>
             <div class="content">
@@ -891,17 +837,11 @@ const getEmailTemplate = (type, data) => {
                 <tr><td colspan="2" class="vat">(includes ${statusVatAmount} AED VAT)</td></tr>
               </table>
               <div class="action-buttons">
-                <a href="${process.env.FRONTEND_URL || "https://graba2z.ae"}/track-order" class="button">Track Your Order</a>
+                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button">Track Your Order</a>
               </div>
             </div>
             <div class="footer">
-              <div class="socials">
-                <a href="https://www.facebook.com/grabatozae/" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107123/WhatsApp_Image_2025-07-21_at_7.10.18_AM_1_axvzvv.jpg" alt="Facebook" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-                <a href="https://www.instagram.com/grabatoz/" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107124/WhatsApp_Image_2025-07-21_at_7.10.18_AM_xgjv5f.jpg" alt="Instagram" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-                <a href="https://x.com/GrabAtoz" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107545/WhatsApp_Image_2025-07-21_at_7.10.18_AM_2_cwzjg6.png" alt="X" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-                <a href="https://www.linkedin.com/company/grabatozae" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107123/WhatsApp_Image_2025-07-21_at_7.10.18_AM_3_ll6y2i.jpg" alt="LinkedIn" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-              </div>
-              <p>This email was sent by: order@grabatoz.ae</p>
+              <p>This email was sent by: order@baytalprotein.net</p>
               <br/>
               <p>Kindly Do Not Reply to this Email</p>
               <br/>
@@ -990,26 +930,7 @@ const getEmailTemplate = (type, data) => {
               font-size: 13px;
               color: #888;
             }
-            .footer .socials {
-              margin: 18px 0 10px 0;
-            }
-            .footer .socials a {
-              display: inline-block;
-              margin: 0 10px;
-              text-decoration: none;
-            }
-            .footer .socials img {
-              width: 32px;
-              height: 32px;
-              vertical-align: middle;
-              border-radius: 50%;
-              background: #fff;
-              box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-              transition: box-shadow 0.2s;
-            }
-            .footer .socials img:hover {
-              box-shadow: 0 4px 16px rgba(26,188,123,0.15);
-            }
+            
             @media (max-width: 600px) {
               .container { border-radius: 0; margin: 0; }
               .content { padding: 24px 8px 24px 8px; }
@@ -1020,8 +941,8 @@ const getEmailTemplate = (type, data) => {
         <body>
           <div class="container">
             <div class="header">
-              <a href="https://www.graba2z.ae/" target="_blank">
-                <img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753105567/admin-logo_ruxcjj.png" alt="Baytal Protein Logo" />
+              <a href="https://baytalprotein.net/" target="_blank">
+                <img src="https://res.cloudinary.com/dyyb62prf/image/upload/v1761983430/logoblue_uplb3m.webp" alt="Baytal Protein Logo" />
               </a>
             </div>
             <div class="content">
@@ -1040,13 +961,7 @@ const getEmailTemplate = (type, data) => {
               <p style="margin-top: 2em; color: #888; font-size: 1em;">This code will expire in 10 minutes.<br />If you didn't submit this review, please ignore this email.</p>
             </div>
             <div class="footer">
-              <div class="socials">
-                <a href="https://www.facebook.com/grabatozae/" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107123/WhatsApp_Image_2025-07-21_at_7.10.18_AM_1_axvzvv.jpg" alt="Facebook" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-                <a href="https://www.instagram.com/grabatoz/" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107124/WhatsApp_Image_2025-07-21_at_7.10.18_AM_xgjv5f.jpg" alt="Instagram" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-                <a href="https://x.com/GrabAtoz" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107545/WhatsApp_Image_2025-07-21_at_7.10.18_AM_2_cwzjg6.png" alt="X" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-                <a href="https://www.linkedin.com/company/grabatozae" target="_blank"><img src="https://res.cloudinary.com/dyfhsu5v6/image/upload/v1753107123/WhatsApp_Image_2025-07-21_at_7.10.18_AM_3_ll6y2i.jpg" alt="LinkedIn" style="width:32px;height:32px;margin:0 10px;vertical-align:middle;background:transparent;border-radius:8px;box-shadow:none;" /></a>
-              </div>
-              <p>This email was sent by: support@grabatoz.ae</p>
+              <p>This email was sent by: support@baytalprotein.net</p>
               <br/>
               <p>Kindly Do Not Reply to this Email</p>
               <br/>
@@ -1073,24 +988,17 @@ const getEmailTemplate = (type, data) => {
         <body>
           <div class="email-container">
             <div class="header">
-              <img src="https://graba2z.ae/logo.png" alt="Baytal Protein" class="logo" />
+              <img src="https://baitulProtein/Baitullogo.webp" alt="Baytal Protein" class="logo" />
             </div>
             <div class="content">
               <p>Thank you for choosing Baytal Protein!</p>
             </div>
             <div class="footer">
-              <h3>Get in Touch</h3>
-              <div class="social-icons">
-                <a href="https://facebook.com/graba2z" class="social-icon">f</a>
-                <a href="https://twitter.com/graba2z" class="social-icon">t</a>
-                <a href="https://instagram.com/graba2z" class="social-icon">@</a>
-                <a href="https://linkedin.com/company/graba2z" class="social-icon">in</a>
-              </div>
               <div class="contact-info">
                 <p><strong>This email was sent by:</strong><br>
-                <a href="mailto:order@grabatoz.ae">order@grabatoz.ae</a></p>
+                <a href="mailto:order@baytalprotein.net">order@baytalprotein.net</a></p>
                 <p><strong>For any questions please send an email to:</strong><br>
-                <a href="mailto:support@grabatoz.ae">support@grabatoz.ae</a></p>
+                <a href="mailto:support@baytalprotein.net">support@baytalprotein.net</a></p>
               </div>
             </div>
           </div>
