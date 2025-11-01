@@ -71,7 +71,7 @@ const getEmailTemplate = (type, data) => {
       .order-icon {
         width: 80px;
         height: 80px;
-        background-color: #2c3e50;
+        background-color: #0B6EFD;
         border-radius: 50%;
         margin: 20px auto;
         display: flex;
@@ -109,7 +109,7 @@ const getEmailTemplate = (type, data) => {
       }
       .button {
         display: inline-block;
-        background-color: #8BC34A;
+        background-color: #0B6EFD;
         color: white;
         padding: 15px 30px;
         text-decoration: none;
@@ -121,7 +121,7 @@ const getEmailTemplate = (type, data) => {
         letter-spacing: 0.5px;
       }
       .button:hover {
-        background-color: #7CB342;
+        background-color: #0A58CA;
       }
       .product-section {
         margin: 30px 0;
@@ -166,7 +166,7 @@ const getEmailTemplate = (type, data) => {
       }
       .product-price {
         font-weight: bold;
-        color: #8BC34A;
+        color: #0B6EFD;
         font-size: 16px;
       }
       .order-summary {
@@ -220,7 +220,7 @@ const getEmailTemplate = (type, data) => {
         flex: 1;
       }
       .footer {
-        background-color: #8BC34A;
+        background-color: #0B6EFD;
         color: white;
         padding: 30px 20px;
         text-align: center;
@@ -241,7 +241,7 @@ const getEmailTemplate = (type, data) => {
         margin: 0 10px;
         line-height: 40px;
         text-decoration: none;
-        color: #8BC34A;
+        color: #0B6EFD;
         font-weight: bold;
       }
       .contact-info {
@@ -274,7 +274,7 @@ const getEmailTemplate = (type, data) => {
           <title>Email Verification</title>
           <style>
             body {
-              background-color: #e8f7ee;
+              background-color: #f2f7ff;
               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
               margin: 0;
               padding: 0;
@@ -321,13 +321,13 @@ const getEmailTemplate = (type, data) => {
               padding: 24px 0;
               font-size: 2.2rem;
               font-weight: bold;
-              color: #1abc7b;
+              color: #0B6EFD;
               letter-spacing: 10px;
               max-width: 320px;
             }
             .copy-btn {
               display: inline-block;
-              background: #1abc7b;
+              background: #0B6EFD;
               color: #fff;
               font-weight: 600;
               padding: 16px 40px;
@@ -339,10 +339,10 @@ const getEmailTemplate = (type, data) => {
               cursor: pointer;
             }
             .copy-btn:hover {
-              background: #159c65;
+              background: #0A58CA;
             }
             .footer {
-              background-color: #e8f7ee;
+              background-color: #f2f7ff;
               padding: 32px 20px 20px 20px;
               text-align: center;
               font-size: 13px;
@@ -368,7 +368,7 @@ const getEmailTemplate = (type, data) => {
               <p>Hi <b>${data.name || "User"}</b>,<br />
               Thank you for registering with Baytal Protein. Please verify your email address by entering the verification code below:</p>
               <div class="code-box">${data.code || "000000"}</div>
-              <p style="margin: 16px 0 0 0; color: #1abc7b; font-weight: bold;">
+              <p style="margin: 16px 0 0 0; color: #0B6EFD; font-weight: bold;">
                 Copy the code above and paste it on the website to verify your email.
               </p>
               <p style="margin-top: 2em; color: #888; font-size: 1em;">This code will expire in 10 minutes.<br />If you didn't create an account with us, please ignore this email.</p>
@@ -427,7 +427,7 @@ const getEmailTemplate = (type, data) => {
           <title>Order Confirmation</title>
           <style>
             body {
-              background-color: #e8f7ee;
+              background-color: #f2f7ff;
               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
               margin: 0;
               padding: 0;
@@ -456,7 +456,7 @@ const getEmailTemplate = (type, data) => {
             .order-icon {
               width: 80px;
               height: 80px;
-              background-color: #2c3e50;
+              background-color: #0B6EFD;
               border-radius: 50%;
               margin: 20px auto 0 auto;
               display: flex;
@@ -494,7 +494,7 @@ const getEmailTemplate = (type, data) => {
             }
             .button {
               display: inline-block;
-              background-color: #8BC34A;
+              background-color: #0B6EFD;
               color: white;
               padding: 15px 30px;
               text-decoration: none;
@@ -506,7 +506,7 @@ const getEmailTemplate = (type, data) => {
               letter-spacing: 0.5px;
             }
             .button:hover {
-              background-color: #7CB342;
+              background-color: #0A58CA;
             }
             .product-section {
               margin: 30px 0;
@@ -551,7 +551,7 @@ const getEmailTemplate = (type, data) => {
             }
             .product-price {
               font-weight: bold;
-              color: #8BC34A;
+              color: #0B6EFD;
               font-size: 16px;
             }
             .order-summary {
@@ -605,7 +605,7 @@ const getEmailTemplate = (type, data) => {
               flex: 1;
             }
             .footer {
-              background-color: #e8f7ee;
+              background-color: #f2f7ff;
               padding: 32px 20px 20px 20px;
               text-align: center;
               font-size: 13px;
@@ -633,7 +633,7 @@ const getEmailTemplate = (type, data) => {
               <div class="processing-text">We are processing your order.</div>
               <div class="action-buttons">
                 <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}" class="button">Visit Website</a>
-                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button">Track Your Order</a>
+                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button" style="color:#ffffff !important; text-decoration:none;">Track Your Order</a>
               </div>
               ${
                 orderItems.length > 0
@@ -765,7 +765,7 @@ const getEmailTemplate = (type, data) => {
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
           <title>Order Status Update</title>
           <style>
-            body { background-color: #e8f7ee; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
+            body { background-color: #f2f7ff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
             .container { max-width: 600px; margin: 32px auto; background-color: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08); border: 1px solid #e0e0e0; }
             .action-buttons {
               text-align: center;
@@ -773,7 +773,7 @@ const getEmailTemplate = (type, data) => {
             }
             .button {
               display: inline-block;
-              background-color: #8BC34A;
+              background-color: #0B6EFD;
               color: white;
               padding: 15px 30px;
               text-decoration: none;
@@ -787,22 +787,27 @@ const getEmailTemplate = (type, data) => {
             .header { background-color: #fff; padding: 32px 0 16px 0; text-align: center; border-bottom: 1px solid #e0e0e0; }
             .header a { display: inline-block; }
             .header img { max-height: 60px; }
-            .order-icon { width: 80px; height: 80px; background-color: #2c3e50; border-radius: 50%; margin: 20px auto 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; }
+            .order-icon { width: 80px; height: 80px; background-color: #0B6EFD; border-radius: 50%; margin: 20px auto 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; }
             .content { padding: 40px 30px 32px 30px; background: #fff; }
             .order-number { font-size: 24px; font-weight: bold; color: #333; text-align: center; margin-bottom: 20px; }
             .greeting { font-size: 18px; text-align: center; margin-bottom: 10px; color: #333; }
             .processing-text { font-size: 16px; text-align: center; color: #666; margin-bottom: 30px; }
-            .status-badge { display: flex; align-items: center; justify-content: center; margin: 24px 0 24px 0; }
-            .status-icon { width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; background: #8BC34A; color: #fff; margin-right: 16px; box-shadow: 0 2px 8px #8BC34A33; }
-            .status-label { font-size: 20px; font-weight: bold; color: #689f38; letter-spacing: 0.2px; }
+            /* Grouped status header section */
+            .status-hero { background: #eaf2ff; border: 1px solid #e0eaff; padding: 20px; border-radius: 12px; text-align: center; margin: 10px 0 24px 0; }
+            .status-hero .order-number { margin-bottom: 8px; }
+            .status-hero .greeting { margin-bottom: 6px; }
+            .status-hero .processing-text { margin-bottom: 12px; }
+            .status-badge { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; margin: 24px 0 8px 0; gap: 6px; width: 100%; }
+            .status-icon { font-size: 40px; line-height: 1; color: #0A58CA; background: none; width: auto; height: auto; margin: 0; box-shadow: none; }
+            .status-label { font-size: 18px; font-weight: 700; color: #0A58CA; letter-spacing: 0.2px; text-align: center; }
             .order-summary-table { width: 100%; border-collapse: collapse; margin: 30px 0 10px 0; }
             .order-summary-table th { background: #f9f9f9; color: #333; font-size: 15px; font-weight: 600; padding: 10px 0; border-bottom: 2px solid #e0e0e0; }
             .order-summary-table td { text-align: center; }
             .order-summary-totals { width: 100%; margin-top: 10px; }
             .order-summary-totals td { font-size: 15px; padding: 6px 0; color: #333; }
-            .order-summary-totals .total { font-weight: bold; font-size: 17px; color: #689f38; }
+            .order-summary-totals .total { font-weight: bold; font-size: 17px; color: #0A58CA; }
             .order-summary-totals .vat { font-size: 13px; color: #888; text-align: right; }
-            .footer { background-color: #e8f7ee; padding: 32px 20px 20px 20px; text-align: center; font-size: 13px; color: #888; }
+            .footer { background-color: #f2f7ff; padding: 32px 20px 20px 20px; text-align: center; font-size: 13px; color: #888; }
             @media (max-width: 600px) { .container { border-radius: 0; margin: 0; } .content { padding: 24px 8px 24px 8px; } .footer { padding: 24px 4px 12px 4px; } }
           </style>
         </head>
@@ -814,12 +819,20 @@ const getEmailTemplate = (type, data) => {
               </a>
             </div>
             <div class="content">
-              <div class="order-number">Order #${data.orderNumber || data._id?.toString().slice(-6) || "N/A"}</div>
-              <div class="greeting">Hello ${data.customerName || "Customer"}!</div>
-              <div class="processing-text">Your order status has been updated.</div>
-              <div class="status-badge">
-                <div class="status-icon">${currentStep.icon}</div>
-                <span class="status-label">${currentStep.label}</span>
+              <div class="status-hero">
+                <div class="order-number">Order #${data.orderNumber || data._id?.toString().slice(-6) || "N/A"}</div>
+                <div class="greeting">Hello ${data.customerName || "Customer"}!</div>
+                <div class="processing-text">Your order status has been updated.</div>
+                <div class="status-badge" style="width:100%;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                    <tr>
+                      <td align="center" style="padding:0;">
+                        <div style="font-size:40px; line-height:1; color:#0A58CA; margin:0 0 6px 0;">${currentStep.icon}</div>
+                        <div style="font-size:18px; font-weight:700; color:#0A58CA; margin:0;">${currentStep.label}</div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
               </div>
               <table class="order-summary-table">
                 <tr>
@@ -837,7 +850,7 @@ const getEmailTemplate = (type, data) => {
                 <tr><td colspan="2" class="vat">(includes ${statusVatAmount} AED VAT)</td></tr>
               </table>
               <div class="action-buttons">
-                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button">Track Your Order</a>
+                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button" style="color:#ffffff !important; text-decoration:none;">Track Your Order</a>
               </div>
             </div>
             <div class="footer">
@@ -865,7 +878,7 @@ const getEmailTemplate = (type, data) => {
           <title>Review Verification</title>
           <style>
             body {
-              background-color: #e8f7ee;
+              background-color: #f2f7ff;
               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
               margin: 0;
               padding: 0;
@@ -912,7 +925,7 @@ const getEmailTemplate = (type, data) => {
               padding: 24px 0;
               font-size: 2.2rem;
               font-weight: bold;
-              color: #1abc7b;
+              color: #0B6EFD;
               letter-spacing: 10px;
               max-width: 320px;
             }
@@ -924,7 +937,7 @@ const getEmailTemplate = (type, data) => {
               text-align: left;
             }
             .footer {
-              background-color: #e8f7ee;
+              background-color: #f2f7ff;
               padding: 32px 20px 20px 20px;
               text-align: center;
               font-size: 13px;
@@ -955,7 +968,7 @@ const getEmailTemplate = (type, data) => {
                 <strong>Your Rating:</strong> ${data.rating || 5}/5 stars<br />
                 <strong>Your Review:</strong> "${data.comment || "No comment"}"
               </div>
-              <p style="margin: 16px 0 0 0; color: #1abc7b; font-weight: bold;">
+              <p style="margin: 16px 0 0 0; color: #0B6EFD; font-weight: bold;">
                 Copy the code above and paste it on the website to verify and publish your review.
               </p>
               <p style="margin-top: 2em; color: #888; font-size: 1em;">This code will expire in 10 minutes.<br />If you didn't submit this review, please ignore this email.</p>
@@ -1136,10 +1149,10 @@ export const sendResetPasswordEmail = async (email, name, resetLink) => {
   try {
     const html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #eee; padding: 32px;">
-        <h2 style="color: #2c3e50;">Reset Your Password</h2>
+  <h2 style="color: #0A58CA;">Reset Your Password</h2>
         <p>Hi ${name || "User"},</p>
         <p>We received a request to reset your password. Click the button below to set a new password. This link is valid for 60 minutes.</p>
-        <a href="${resetLink}" style="display: inline-block; margin: 24px 0; padding: 12px 24px; background: #84cc16; color: #fff; border-radius: 4px; text-decoration: none; font-weight: bold;">Reset Password</a>
+  <a href="${resetLink}" style="display: inline-block; margin: 24px 0; padding: 12px 24px; background: #0B6EFD; color: #fff; border-radius: 4px; text-decoration: none; font-weight: bold;">Reset Password</a>
         <p>If you did not request this, you can safely ignore this email.</p>
         <p style="color: #888; font-size: 12px; margin-top: 32px;">&copy; ${new Date().getFullYear()} Baytal Protein</p>
       </div>
