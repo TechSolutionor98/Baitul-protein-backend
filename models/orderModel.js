@@ -99,8 +99,12 @@ const orderSchema = mongoose.Schema(
         "Processing",
         "Confirmed",
         "Ready for Shipment",
+        // Accept admin variant with different casing
+        "Ready For Shipment",
         "Shipped",
         "On the Way",
+        // Accept admin variant with different casing
+        "On The Way",
         "Out for Delivery",
         "Delivered",
         "On Hold",

@@ -719,9 +719,12 @@ const getEmailTemplate = (type, data) => {
       const statusSteps = [
         { key: "Processing", label: "Processing", icon: "⚙️" },
         { key: "Confirmed", label: "Confirmed", icon: "✅" },
+        { key: "Ready for Shipment", label: "Ready for Shipment", icon: "📦" },
         { key: "Shipped", label: "Shipped", icon: "📦" },
+        { key: "On the Way", label: "On the Way", icon: "🚚" },
         { key: "Out for Delivery", label: "Out for Delivery", icon: "🚚" },
         { key: "Delivered", label: "Delivered", icon: "🎉" },
+        { key: "On Hold", label: "On Hold", icon: "⏸️" },
         { key: "Cancelled", label: "Cancelled", icon: "❌" },
       ]
       const getCurrentStep = (status) => {
@@ -729,10 +732,13 @@ const getEmailTemplate = (type, data) => {
         const normalized = status.trim().toLowerCase()
         if (normalized === "processing") return statusSteps[0]
         if (normalized === "confirmed") return statusSteps[1]
-        if (normalized === "shipped") return statusSteps[2]
-        if (normalized === "out for delivery") return statusSteps[3]
-        if (normalized === "delivered") return statusSteps[4]
-        if (normalized === "cancelled") return statusSteps[5]
+        if (normalized === "ready for shipment") return statusSteps[2]
+        if (normalized === "shipped") return statusSteps[3]
+        if (normalized === "on the way") return statusSteps[4]
+        if (normalized === "out for delivery") return statusSteps[5]
+        if (normalized === "delivered") return statusSteps[6]
+        if (normalized === "on hold") return statusSteps[7]
+        if (normalized === "cancelled") return statusSteps[8]
         return statusSteps[0]
       }
       const currentStep = getCurrentStep(data.status)
@@ -1094,10 +1100,10 @@ export const sendOrderStatusUpdateEmail = async (order) => {
     const customerName = order.shippingAddress?.name || order.pickupDetails?.name || order.user?.name || "Customer"
     const customerEmail = order.shippingAddress?.email || order.pickupDetails?.email || order.user?.email
 
-    // Skip sending any email if status is Deleted
+    // Skip sending any email for Deleted or Ready for Shipment statuses
     const normalizedStatus = (order.status || "").toString().trim().toLowerCase()
-    if (normalizedStatus === "deleted") {
-      console.warn(`Skipping email for order #${orderNumber} because status is Deleted`)
+    if (normalizedStatus === "deleted" || normalizedStatus === "ready for shipment") {
+      console.warn(`Skipping email for order #${orderNumber} because status is ${order.status}`)
       return { success: true, skipped: true, reason: "status_deleted" }
     }
 
@@ -1115,10 +1121,13 @@ export const sendOrderStatusUpdateEmail = async (order) => {
     const statusMessages = {
       processing: "Order is Being Processed",
       confirmed: "Order Confirmed",
+      "ready for shipment": "Order Ready for Shipment",
       shipped: "Order Shipped",
+      "on the way": "Order On the Way",
       delivered: "Order Delivered",
       cancelled: "Order Cancelled",
       deleted: "Order Deleted", // not used due to early return
+      "on hold": "Order On Hold",
     }
 
     const subject = `${statusMessages[normalizedStatus] || "Order Update"} #${orderNumber} - Baytal Protein`
