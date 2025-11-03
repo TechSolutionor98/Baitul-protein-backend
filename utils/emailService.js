@@ -736,6 +736,8 @@ const getEmailTemplate = (type, data) => {
         return statusSteps[0]
       }
       const currentStep = getCurrentStep(data.status)
+      const normalizedStatus = (data.status || "").toString().trim().toLowerCase()
+      const showSummary = normalizedStatus === "delivered"
       // Order summary table (scoped variables)
       const statusOrderItems = Array.isArray(data.orderItems) ? data.orderItems : []
       const statusOrderItemsHtml = statusOrderItems
@@ -757,6 +759,23 @@ const getEmailTemplate = (type, data) => {
       const statusShipping = data.shippingPrice || 0
       const statusTotal = data.totalPrice || 0
       const statusVatAmount = (statusTotal * 0.05).toFixed(2)
+      const orderSummaryHtml = `
+              <table class="order-summary-table">
+                <tr>
+                  <th>Image</th>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Qty</th>
+                </tr>
+                ${statusOrderItemsHtml}
+              </table>
+              <table class="order-summary-totals">
+                <tr><td style="text-align:right;">Subtotal:</td><td style="text-align:right;">AED ${statusSubtotal.toFixed(2)}</td></tr>
+                <tr><td style="text-align:right;">Shipping:</td><td style="text-align:right;">AED ${statusShipping.toFixed(2)}</td></tr>
+                <tr class="total"><td style="text-align:right;">Total:</td><td style="text-align:right;">AED ${statusTotal.toFixed(2)}</td></tr>
+                <tr><td colspan="2" class="vat">(includes ${statusVatAmount} AED VAT)</td></tr>
+              </table>
+      `
       return `
         <!DOCTYPE html>
         <html lang="en">
@@ -834,21 +853,7 @@ const getEmailTemplate = (type, data) => {
                   </table>
                 </div>
               </div>
-              <table class="order-summary-table">
-                <tr>
-                  <th>Image</th>
-                  <th>Product</th>
-                  <th>Price</th>
-                  <th>Qty</th>
-                </tr>
-                ${statusOrderItemsHtml}
-              </table>
-              <table class="order-summary-totals">
-                <tr><td style="text-align:right;">Subtotal:</td><td style="text-align:right;">AED ${statusSubtotal.toFixed(2)}</td></tr>
-                <tr><td style="text-align:right;">Shipping:</td><td style="text-align:right;">AED ${statusShipping.toFixed(2)}</td></tr>
-                <tr class="total"><td style="text-align:right;">Total:</td><td style="text-align:right;">AED ${statusTotal.toFixed(2)}</td></tr>
-                <tr><td colspan="2" class="vat">(includes ${statusVatAmount} AED VAT)</td></tr>
-              </table>
+              ${showSummary ? orderSummaryHtml : ""}
               <div class="action-buttons">
                 <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button" style="background:#d9a82e !important; color:#ffffff !important; text-decoration:none;">Track Your Order</a>
               </div>
@@ -1089,6 +1094,13 @@ export const sendOrderStatusUpdateEmail = async (order) => {
     const customerName = order.shippingAddress?.name || order.pickupDetails?.name || order.user?.name || "Customer"
     const customerEmail = order.shippingAddress?.email || order.pickupDetails?.email || order.user?.email
 
+    // Skip sending any email if status is Deleted
+    const normalizedStatus = (order.status || "").toString().trim().toLowerCase()
+    if (normalizedStatus === "deleted") {
+      console.warn(`Skipping email for order #${orderNumber} because status is Deleted`)
+      return { success: true, skipped: true, reason: "status_deleted" }
+    }
+
     if (!customerEmail) {
       console.error("No customer email found for order:", order._id)
       return { success: false, error: "No customer email" }
@@ -1106,9 +1118,10 @@ export const sendOrderStatusUpdateEmail = async (order) => {
       shipped: "Order Shipped",
       delivered: "Order Delivered",
       cancelled: "Order Cancelled",
+      deleted: "Order Deleted", // not used due to early return
     }
 
-    const subject = `${statusMessages[order.status] || "Order Update"} #${orderNumber} - Baytal Protein`
+    const subject = `${statusMessages[normalizedStatus] || "Order Update"} #${orderNumber} - Baytal Protein`
     await sendEmail(customerEmail, subject, html, "order")
     return { success: true }
   } catch (error) {
