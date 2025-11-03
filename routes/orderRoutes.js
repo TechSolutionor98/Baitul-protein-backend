@@ -4,6 +4,7 @@ import asyncHandler from "express-async-handler"
 import Order from "../models/orderModel.js"
 import { protect, admin } from "../middleware/authMiddleware.js"
 import { sendOrderPlacedEmail, sendOrderStatusUpdateEmail } from "../utils/emailService.js"
+import PDFDocument from "pdfkit"
 
 const router = express.Router()
 
@@ -349,6 +350,149 @@ router.post(
       res.status(500)
       throw new Error("Error occurred while tracking order. Please try again.")
     }
+  }),
+)
+
+// @desc    Download invoice PDF (public with email verification)
+// @route   GET /api/orders/:id/invoice
+// @access  Public (requires matching email)
+router.get(
+  "/:id/invoice",
+  asyncHandler(async (req, res) => {
+    const { email } = req.query
+    const orderId = req.params.id
+
+    const order = await Order.findById(orderId)
+      .populate("user", "name email")
+      .populate("orderItems.product", "name image")
+
+    if (!order) {
+      res.status(404)
+      throw new Error("Order not found")
+    }
+
+    // Basic email-based authorization (matches shipping, pickup or user email)
+    const allowedEmails = [
+      order.shippingAddress?.email,
+      order.pickupDetails?.email,
+      order.user?.email,
+    ].filter(Boolean)
+
+    if (!email || !allowedEmails.map((e) => e.toLowerCase()).includes(String(email).toLowerCase())) {
+      res.status(403)
+      throw new Error("Unauthorized to download invoice for this order")
+    }
+
+    const shortId = order._id.toString().slice(-6)
+
+    // Prepare PDF document
+    const doc = new PDFDocument({ size: "A4", margin: 50 })
+    res.setHeader("Content-Type", "application/pdf")
+    res.setHeader("Content-Disposition", `attachment; filename=Invoice-${shortId}.pdf`)
+    doc.pipe(res)
+
+    // Header
+    doc
+      .fontSize(20)
+      .fillColor("#0A58CA")
+      .text("Baytal Protein", { align: "left" })
+      .moveDown(0.3)
+    doc
+      .fontSize(14)
+      .fillColor("#000")
+      .text("TAX INVOICE", { align: "left" })
+      .moveDown()
+
+    // Order info
+    const createdAt = new Date(order.createdAt).toLocaleDateString()
+    const paymentStatus = order.isPaid ? "Paid" : "Unpaid"
+    const paymentMethod = order.paymentMethod || "Cash on Delivery"
+    const deliveryType = order.deliveryType === "pickup" ? "Store Pickup" : "Home Delivery"
+
+    doc
+      .fontSize(10)
+      .text(`Order #${shortId}`)
+      .text(`Date: ${createdAt}`)
+      .text(`Status: ${order.status}`)
+      .text(`Payment Status: ${paymentStatus}`)
+      .text(`Payment Method: ${paymentMethod}`)
+      .text(`Delivery: ${deliveryType}`)
+      .moveDown()
+
+    // Address
+    const addr = order.deliveryType === "pickup" ? order.pickupDetails : order.shippingAddress
+    if (addr) {
+      doc
+        .fontSize(10)
+        .text("Bill To:")
+        .text(addr.name || "Customer")
+        .text(addr.address || addr.location || "")
+        .text(`${addr.city || ""}`)
+        .text(`Phone: ${addr.phone || ""}`)
+        .moveDown()
+    }
+
+    // Table header
+    const tableTop = doc.y
+    const colX = { product: 50, qty: 330, price: 400, total: 480 }
+    doc
+      .fontSize(10)
+      .fillColor("#111")
+      .text("Product", colX.product, tableTop)
+      .text("Qty", colX.qty, tableTop)
+      .text("Price", colX.price, tableTop)
+      .text("Total", colX.total, tableTop)
+    doc.moveTo(50, tableTop + 12).lineTo(550, tableTop + 12).strokeColor("#ddd").stroke()
+
+    // Table rows
+    let y = tableTop + 20
+    order.orderItems.forEach((item) => {
+      const price = Number(item.price) || 0
+      const qty = Number(item.quantity) || 0
+      const lineTotal = price * qty
+      doc
+        .fontSize(10)
+        .fillColor("#000")
+        .text(item.name || item.product?.name || "Product", colX.product, y, { width: 260 })
+        .text(qty.toString(), colX.qty, y)
+        .text(`AED ${price.toFixed(2)}`, colX.price, y)
+        .text(`AED ${lineTotal.toFixed(2)}`, colX.total, y)
+      y += 18
+    })
+
+    // Totals
+    const subtotal = Number(order.itemsPrice) || 0
+    const shipping = Number(order.shippingPrice) || 0
+    const total = Number(order.totalPrice) || 0
+    const vat = total * 0.05
+
+    doc.moveTo(50, y + 6).lineTo(550, y + 6).strokeColor("#ddd").stroke()
+    y += 16
+    const labelX = 380
+    doc
+      .fontSize(10)
+      .text("Subtotal:", labelX, y)
+      .text(`AED ${subtotal.toFixed(2)}`, colX.total, y, { align: "right" })
+    y += 16
+    doc.text("Shipping:", labelX, y).text(`AED ${shipping.toFixed(2)}`, colX.total, y, { align: "right" })
+    y += 16
+    doc.text("VAT (5%):", labelX, y).text(`AED ${vat.toFixed(2)}`, colX.total, y, { align: "right" })
+    y += 16
+    doc
+      .font("Helvetica-Bold")
+      .text("Total:", labelX, y)
+      .text(`AED ${total.toFixed(2)}`, colX.total, y, { align: "right" })
+      .font("Helvetica")
+    y += 24
+
+    // Footer
+    doc
+      .fontSize(9)
+      .fillColor("#555")
+      .text("Thank you for your purchase!", 50, y)
+      .moveDown()
+
+    doc.end()
   }),
 )
 

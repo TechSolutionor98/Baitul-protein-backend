@@ -765,6 +765,16 @@ const getEmailTemplate = (type, data) => {
       const statusShipping = data.shippingPrice || 0
       const statusTotal = data.totalPrice || 0
       const statusVatAmount = (statusTotal * 0.05).toFixed(2)
+      const paymentStatus = data.isPaid ? "Paid" : "Unpaid"
+      const paymentMethod = data.paymentMethod || "Cash on Delivery"
+      const customerEmailForInvoice =
+        data.shippingAddress?.email || data.pickupDetails?.email || data.user?.email || ""
+      const apiBase =
+        process.env.API_BASE_URL || process.env.BACKEND_URL || process.env.SERVER_URL || process.env.FRONTEND_URL ||
+        "https://baytalprotein.net"
+      const invoiceUrl = `${apiBase}/api/orders/${data._id || ""}/invoice?email=${encodeURIComponent(
+        customerEmailForInvoice,
+      )}`
       const orderSummaryHtml = `
               <table class="order-summary-table">
                 <tr>
@@ -780,6 +790,10 @@ const getEmailTemplate = (type, data) => {
                 <tr><td style="text-align:right;">Shipping:</td><td style="text-align:right;">AED ${statusShipping.toFixed(2)}</td></tr>
                 <tr class="total"><td style="text-align:right;">Total:</td><td style="text-align:right;">AED ${statusTotal.toFixed(2)}</td></tr>
                 <tr><td colspan="2" class="vat">(includes ${statusVatAmount} AED VAT)</td></tr>
+                <tr><td style="text-align:right;">Payment Status:</td><td style="text-align:right; font-weight:600; color:${
+                  data.isPaid ? "#198754" : "#dc3545"
+                }">${paymentStatus}</td></tr>
+                <tr><td style="text-align:right;">Payment Method:</td><td style="text-align:right;">${paymentMethod}</td></tr>
               </table>
       `
       return `
@@ -861,6 +875,11 @@ const getEmailTemplate = (type, data) => {
               </div>
               ${showSummary ? orderSummaryHtml : ""}
               <div class="action-buttons">
+                ${
+                  showSummary
+                    ? `<a href="${invoiceUrl}" download class="button" style="background:#198754 !important; color:#ffffff !important; text-decoration:none;">Download Invoice</a>`
+                    : ""
+                }
                 <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button" style="background:#d9a82e !important; color:#ffffff !important; text-decoration:none;">Track Your Order</a>
               </div>
             </div>
