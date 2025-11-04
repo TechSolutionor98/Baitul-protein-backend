@@ -398,7 +398,7 @@ const getEmailTemplate = (type, data) => {
           <div class="product-details">
             <div class="product-name">${item.product?.name || item.name || "Product"}</div>
             <div class="product-quantity">Quantity: ${item.quantity || 1}</div>
-            <div class="product-price">${(item.price || 0).toFixed(2)}AED</div>
+            <div class="product-price">AED ${(item.price || 0).toFixed(2)}</div>
           </div>
         </div>
       `,
@@ -453,18 +453,7 @@ const getEmailTemplate = (type, data) => {
             .header img {
               max-height: 60px;
             }
-            .order-icon {
-              width: 80px;
-              height: 80px;
-              background-color: #0B6EFD;
-              border-radius: 50%;
-              margin: 20px auto 0 auto;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              color: white;
-              font-size: 30px;
-            }
+            .order-icon { width: 80px; height: 80px; background: transparent !important; border-radius: 0; margin: 8px auto 8px auto; display: flex; align-items: center; justify-content: center; color: #0B6EFD; font-size: 44px; line-height: 1; }
             .content {
               padding: 40px 30px 32px 30px;
               background: #fff;
@@ -488,6 +477,7 @@ const getEmailTemplate = (type, data) => {
               color: #666;
               margin-bottom: 30px;
             }
+            .hero { background: #eaf2ff; border: 1px solid #e0eaff; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
             .action-buttons {
               text-align: center;
               margin: 30px 0;
@@ -513,6 +503,7 @@ const getEmailTemplate = (type, data) => {
               padding: 20px;
               background-color: #f9f9f9;
               border-radius: 8px;
+              border: 1px solid #eee;
             }
             .product-item {
               display: flex;
@@ -559,6 +550,7 @@ const getEmailTemplate = (type, data) => {
               padding: 20px;
               border-radius: 8px;
               margin: 20px 0;
+              border: 1px solid #eee;
             }
             .summary-row {
               display: flex;
@@ -595,6 +587,7 @@ const getEmailTemplate = (type, data) => {
               border-radius: 8px;
               font-size: 14px;
               line-height: 1.6;
+              border: 1px solid #eee;
             }
             .address-section {
               display: flex;
@@ -625,79 +618,19 @@ const getEmailTemplate = (type, data) => {
               <a href="https://baytalprotein.net/" target="_blank">
                 <img src="https://res.cloudinary.com/dyyb62prf/image/upload/v1761983430/logoblue_uplb3m.webp" alt="Baytal Protein Logo" />
               </a>
-              <div class="order-icon">🛒</div>
             </div>
             <div class="content">
-              <div class="order-number">Order #${data.orderNumber || data._id?.toString().slice(-6) || "N/A"}</div>
-              <div class="greeting">Hi ${customerName}, Thank you for your purchase.</div>
-              <div class="processing-text">We are processing your order.</div>
+              <div class="hero">
+                <div class="order-icon">🛒</div>
+                <div class="order-number">Order #${data.orderNumber || data._id?.toString().slice(-6) || "N/A"}</div>
+                <div class="greeting">Hi ${customerName}, Thank you for your purchase.</div>
+                <div class="processing-text">We are processing your order.</div>
+              </div>
               <div class="action-buttons">
-                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}" class="button">Visit Website</a>
-                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button" style="background:#d9a82e !important; color:#ffffff !important; text-decoration:none;">Track Your Order</a>
+                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}" class="button" style="color:#ffffff !important;">Visit Website</a>
+                <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button" style="background:#d9a82e !important; color:#ffffff !important; text-decoration:none;">Order Tracking</a>
               </div>
-              ${
-                orderItems.length > 0
-                  ? `
-              <div class="product-section">
-                ${orderItemsHtml}
-              </div>
-              `
-                  : ""
-              }
-              <div class="info-section">
-                <div class="info-title">Payment Method</div>
-                <div class="info-content">${data.paymentMethod || "Cash on delivery"}</div>
-              </div>
-              <div class="info-section">
-                <div class="info-title">Shipment Method</div>
-                <div class="info-content">${data.deliveryType === "pickup" ? "Store Pickup" : "Home Delivery"}</div>
-              </div>
-              ${
-                data.customerNotes
-                  ? `
-              <div class="info-section">
-                <div class="info-title">Note</div>
-                <div class="info-content">${data.customerNotes}</div>
-              </div>
-              `
-                  : ""
-              }
-              <div class="order-summary">
-                <div class="summary-row">
-                  <span>Subtotal</span>
-                  <span>${subtotal.toFixed(2)}AED</span>
-                </div>
-                <div class="summary-row">
-                  <span>Shipping</span>
-                  <span>${shipping.toFixed(2)}AED</span>
-                </div>
-                <div class="summary-row total">
-                  <span>Total</span>
-                  <span>${total.toFixed(2)}AED</span>
-                </div>
-                <div class="vat-note">(includes ${vatAmount}AED VAT)</div>
-              </div>
-              <div class="address-section">
-                <div class="address-block">
-                  <div class="info-title">Billing Address</div>
-                  <div class="info-content">
-                    ${billingAddress.name || customerName}<br>
-                    ${billingAddress.address || "N/A"}<br>
-                    ${billingAddress.city || "N/A"}<br>
-                    ${billingAddress.phone || customerPhone}<br>
-                    ${billingAddress.email || customerEmail}
-                  </div>
-                </div>
-                <div class="address-block">
-                  <div class="info-title">${data.deliveryType === "pickup" ? "Pickup Location" : "Shipping Address"}</div>
-                  <div class="info-content">
-                    ${shippingAddress?.name || customerName}<br>
-                    ${shippingAddress?.address || shippingAddress?.location || "N/A"}<br>
-                    ${shippingAddress?.city || "N/A"}<br>
-                    ${shippingAddress?.phone || customerPhone}
-                  </div>
-                </div>
-              </div>
+              
             </div>
             <div class="footer">
               <p>This email was sent by: order@baytalprotein.net</p>
