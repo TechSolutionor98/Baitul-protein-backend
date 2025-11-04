@@ -674,9 +674,10 @@ const getEmailTemplate = (type, data) => {
         if (normalized === "cancelled") return statusSteps[8]
         return statusSteps[0]
       }
-      const currentStep = getCurrentStep(data.status)
-      const normalizedStatus = (data.status || "").toString().trim().toLowerCase()
-      const showSummary = normalizedStatus === "delivered"
+  const currentStep = getCurrentStep(data.status)
+  const normalizedStatus = (data.status || "").toString().trim().toLowerCase()
+  // Simplify Delivered email like others: do not show invoice/items table
+  const showSummary = false
       // Order summary table (scoped variables)
       const statusOrderItems = Array.isArray(data.orderItems) ? data.orderItems : []
       const statusOrderItemsHtml = statusOrderItems
@@ -708,6 +709,8 @@ const getEmailTemplate = (type, data) => {
       const invoiceUrl = `${apiBase}/api/orders/${data._id || ""}/invoice?email=${encodeURIComponent(
         customerEmailForInvoice,
       )}`
+      const portalBase = process.env.FRONTEND_URL || "https://baytalprotein.net"
+      const portalUrl = `${portalBase}/account/orders`
       const orderSummaryHtml = `
               <table class="order-summary-table">
                 <tr>
@@ -806,13 +809,14 @@ const getEmailTemplate = (type, data) => {
                   </table>
                 </div>
               </div>
-              ${showSummary ? orderSummaryHtml : ""}
+              ${
+                normalizedStatus === "delivered"
+                  ? `<p style="margin:10px 0 0 0; text-align:center; color:#555; font-size:14px;">
+                      To check all invoices and download them, please log in to the <a href="${portalUrl}" style="color:#0B6EFD; text-decoration:underline;">Baytul Protein Portal</a>.
+                    </p>`
+                  : ""
+              }
               <div class="action-buttons">
-                ${
-                  showSummary
-                    ? `<a href="${invoiceUrl}" download class="button" style="background:#198754 !important; color:#ffffff !important; text-decoration:none;">Download Invoice</a>`
-                    : ""
-                }
                 <a href="${process.env.FRONTEND_URL || "https://baytalprotein.net/"}/track-order" class="button" style="background:#d9a82e !important; color:#ffffff !important; text-decoration:none;">Track Your Order</a>
               </div>
             </div>
